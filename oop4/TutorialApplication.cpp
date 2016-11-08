@@ -30,6 +30,20 @@ TutorialApplication::~TutorialApplication(void)
 void TutorialApplication::createScene(void)
 {
     // Create your scene here :)
+
+	// Turn on the lights
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
+	// Ask the SceneManager to create an Entity
+	Ogre::Entity* ogreEntity = mSceneMgr->createEntity("penguin.mesh");
+	// We need to create a SceneNode so the Entity can be displayed in our scene
+	Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+	// Attach our Entity to it
+	ogreNode->attachObject(ogreEntity);
+
+	Ogre::Light* light = mSceneMgr->createLight("MainLight");
+
+	light->setPosition(20, 80, 50);
+
 }
 //---------------------------------------------------------------------------
 
